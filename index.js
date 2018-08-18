@@ -30,10 +30,11 @@ app.post('/slack', (req, res1) =>
                       fallback: 'error',
                       title: img_url,
                       image_url: img_url,
+                      callback_id : 'test',
                       actions: [{name:'test',
                                 text:'Pick Gif!',
                                 type:'button',
-                                value:i
+                                value:img_url
                   }]};
                   url_to_slack.push(img);
                   console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
@@ -55,13 +56,18 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
+  var img = new Array({
+    fallback: 'error',
+    title: req.body.value,
+    image_url: req.body.value
+  });
   let data_to_slack = { 
     username: 'giphypick',
     icon_emoji: ':dog:',
     response_type: 'in_channel',
     text: 'the winner here', 
-    attachments: req};
-  res1.json(JSON.parse(JSON.stringify(data_to_slack)))
+    attachments: img};
+  res.json(JSON.parse(JSON.stringify(data_to_slack)))
 });
 
 app.get('/', (req, res1) => 
