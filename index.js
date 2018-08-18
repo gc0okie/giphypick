@@ -49,7 +49,7 @@ app.post('/slack', (req, res1) =>
     ]);
 });
 
-app.get('/', (req, res1) => res1.send('<body><h1>hello world</h1><body>')))
+app.get('/', (req, res1) => res1.send('<body><h1>hello world</h1><body>'));
 //{
     /*giphy.search({
         q: 'doge',
