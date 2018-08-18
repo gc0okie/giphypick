@@ -61,7 +61,7 @@ app.get('/', (req, res1) =>
         }, (err, res) => {
             img_url = res.data[0].images.original.url
             console.log(img_url)
-            res1.send('<body><h1>welcome to dogegifs</h1><body>')
+            res1.send('<body><h1>giphy pick! \n</h1><img src="' + img_url + '" alt="doge mfkn gifs"><body>')
         }
     )
 });
