@@ -32,11 +32,11 @@ app.post('/slack', (req, res1) =>
                         image_url: img_url};
                     url_to_slack.push(img);
                     let button = {
-                      actions: {name:'test',
+                      actions: [{name:'test',
                                 text:'button',
                                 type:'button',
                                 value:i
-                      }
+                      }]
                     }
                     url_to_slack.push(button);
                     console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
