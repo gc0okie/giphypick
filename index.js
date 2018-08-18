@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const express = require('express');
 const async = require('async');
 const bodyParser = require('body-parser');
 const app = express();
