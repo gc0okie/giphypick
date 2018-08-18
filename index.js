@@ -38,7 +38,7 @@ app.post('/slack', (req, res1) =>
                                 'value':'1'
                       }
                     }
-                    utl_to_slack.push(button);
+                    url_to_slack.push(button);
                     //console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
                 callback(null, url_to_slack)
