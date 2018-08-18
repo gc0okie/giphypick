@@ -25,21 +25,18 @@ app.post('/slack', (req, res1) =>
             fmt: 'json'
             }, (err, res) => {
                 for (i in res.data) {
-                    var img_url = res.data[i].images.fixed_height_downsampled.url
-                    let img = {
-                        fallback: 'error',
-                        title: img_url,
-                        image_url: img_url};
-                    url_to_slack.push(img);
-                    let button = {
+                  var img_url = res.data[i].images.fixed_height_downsampled.url
+                  let img = {
+                      fallback: 'error',
+                      title: img_url,
+                      image_url: img_url,
                       actions: [{name:'test',
-                                text:'button',
+                                text:'Pick Gif!',
                                 type:'button',
                                 value:i
-                      }]
-                    }
-                    url_to_slack.push(button);
-                    console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
+                  }]};
+                  url_to_slack.push(img);
+                  console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
                 callback(null, url_to_slack)
             }
@@ -55,6 +52,16 @@ app.post('/slack', (req, res1) =>
             res1.json(JSON.parse(JSON.stringify(data_to_slack)))
         },
     ]);
+});
+
+app.post('/slackresponse', (req, res) => {
+  let data_to_slack = { 
+    username: 'giphypick',
+    icon_emoji: ':dog:',
+    response_type: 'ephemeral', // not public
+    text: 'giphypick text here', 
+    attachments: url_to_slack};
+  res1.json(JSON.parse(JSON.stringify(data_to_slack)))
 });
 
 app.get('/', (req, res1) => 
