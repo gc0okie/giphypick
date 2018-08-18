@@ -56,12 +56,12 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  console.log('/slackresponse received: ' + JSON.stringify(req));
-  var img = new Array({
+  console.log('/slackresponse received: ' + req);
+  let img = {
     fallback: 'error',
     title: req.body.value,
     image_url: req.body.value
-  });
+  };
   let data_to_slack = { 
     username: 'giphypick',
     icon_emoji: ':dog:',
