@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.post('/slack', (req, res1) => 
 {
-    requestStr = parseInt(req.body.text);
+    requestStr = String(req.body.text);
     var url_to_slack = new Array();
     async.waterfall([
         (callback) => {
