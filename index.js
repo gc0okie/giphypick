@@ -58,9 +58,9 @@ app.post('/slackresponse', (req, res) => {
   let data_to_slack = { 
     username: 'giphypick',
     icon_emoji: ':dog:',
-    response_type: 'ephemeral', // not public
-    text: 'giphypick text here', 
-    attachments: url_to_slack};
+    response_type: 'in_channel',
+    text: 'the winner here', 
+    attachments: req};
   res1.json(JSON.parse(JSON.stringify(data_to_slack)))
 });
 
