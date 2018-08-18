@@ -49,9 +49,9 @@ app.post('/slack', (req, res1) =>
     ]);
 });
 
-app.get('/', (req, res1) => res1.send('<body><h1>hello world</h1><body>'));
-//{
-    /*giphy.search({
+app.get('/', (req, res1) => 
+{
+    giphy.search({
         q: 'doge',
         limit: 1,
         offset: Math.floor(Math.random() * Math.floor(100)),
@@ -59,8 +59,8 @@ app.get('/', (req, res1) => res1.send('<body><h1>hello world</h1><body>'));
         fmt: 'json'
         }, (err, res) => {
             img_url = res.data[0].images.original.url
-            console.log(img_url)*/
-            //res1.send('<body><h1>hello world</h1><body>')
-        //}
-    //);
-//});
+            console.log(img_url)
+            res1.send('<body><h1>welcome to dogegifs</h1><body>')
+        }
+    )
+});
