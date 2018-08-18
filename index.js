@@ -28,9 +28,16 @@ app.post('/slack', (req, res1) =>
                     var img_url = res.data[i].images.fixed_height_downsampled.url
                     let img = {
                         fallback: 'error',
-                        title: 'img',
+                        title: img_url,
                         image_url: img_url};
                     url_to_slack.push(img);
+                    let button = {
+                      actions: {'name':'test',
+                                'text':'button',
+                                'type':'button',
+                                'value':'1'
+                      }
+                    }
                     console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
                 callback(null, url_to_slack)
@@ -41,7 +48,7 @@ app.post('/slack', (req, res1) =>
             let data_to_slack = { 
                 username: 'giphypick',
                 icon_emoji: ':dog:',
-                response_type: 'in_channel', // public to the channel 
+                response_type: 'ephemeral', // not public
                 text: 'giphypick text here', 
                 attachments: url_to_slack};
             console.log(data_to_slack);
