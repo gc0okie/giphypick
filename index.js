@@ -1,11 +1,11 @@
 const express = require('express')
+const app = express();
 const path = require('path')
 const async = require('async');
 const bodyParser = require('body-parser');
-const app = express();
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
-const giphy = require('giphy-api')
+const giphy = require('giphy-api')('hQZZ5e4DdsdQqY4prZpckQetnyZZpbqP');
 const PORT = process.env.PORT || 5000
 
 app.use(express.json());
@@ -16,7 +16,6 @@ app.post('/slack', (req, res1) =>
     var url_to_slack = new Array();
     async.waterfall([
         (callback) => {
-        var giphy = require('giphy-api')('hQZZ5e4DdsdQqY4prZpckQetnyZZpbqP');
         giphy.search({
             q: requestStr,
             limit: 5,
@@ -52,8 +51,6 @@ app.post('/slack', (req, res1) =>
 
 app.get('/', (req, res1) => 
 {
-
-    var giphy = require('giphy-api')('hQZZ5e4DdsdQqY4prZpckQetnyZZpbqP');
     giphy.search({
         q: 'doge',
         limit: 1,
