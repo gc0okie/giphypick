@@ -37,7 +37,7 @@ app.post('/slack', (req, res1) =>
                                 value:img_url
                   }]};
                   url_to_slack.push(img);
-                  console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
+                  //console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
                 callback(null, url_to_slack)
             }
@@ -49,13 +49,14 @@ app.post('/slack', (req, res1) =>
                 response_type: 'ephemeral', // not public
                 text: 'giphypick text here', 
                 attachments: url_to_slack};
-            console.log('data sent to slack: \n'+ data_to_slack);
+            //console.log('data sent to slack: \n'+ data_to_slack);
             res1.json(JSON.parse(JSON.stringify(data_to_slack)))
         },
     ]);
 });
 
 app.post('/slackresponse', (req, res) => {
+  console.log('/slackresponse received: ' + JSON.stringify(req));
   var img = new Array({
     fallback: 'error',
     title: req.body.value,
