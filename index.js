@@ -51,7 +51,7 @@ app.post('/slack', (req, res1) =>
 
 app.get('/', (req, res1) => 
 {
-    giphy.search({
+    /*giphy.search({
         q: 'doge',
         limit: 1,
         offset: Math.floor(Math.random() * Math.floor(100)),
@@ -59,8 +59,8 @@ app.get('/', (req, res1) =>
         fmt: 'json'
         }, (err, res) => {
             img_url = res.data[0].images.original.url
-            console.log(img_url)
-            res1.send('<body><h1>welcome to dogegifs</h1><img src="' + img_url + '" alt="doge mfkn gifs"><h2>refresh page for moar</h2><body>')
+            console.log(img_url)*/
+            res1.send('<body><h1>hello world</h1><body>')
         }
-    )
-});
+    );
+//});
