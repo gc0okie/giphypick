@@ -35,7 +35,7 @@ app.post('/slack', (req, res1) =>
                       actions: {name:'test',
                                 text:'button',
                                 type:'button',
-                                value:'1'
+                                value:i
                       }
                     }
                     url_to_slack.push(button);
@@ -52,7 +52,7 @@ app.post('/slack', (req, res1) =>
                 text: 'giphypick text here', 
                 attachments: url_to_slack};
             console.log('data sent to slack: \n'+ data_to_slack);
-            res1.json(JSON.parse(JSON.stringify(data_to_slack)))
+            res1.json(JSON.stringify(data_to_slack))
         },
     ]);
 });
