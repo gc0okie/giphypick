@@ -8,6 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const giphy = require('giphy-api')
 const PORT = process.env.PORT || 5000
 
+app.use(express.json());
+
 app.post('/slack', (req, res1) => 
 {
     requestStr = parseInt(req.body.text);
