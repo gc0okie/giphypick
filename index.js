@@ -56,7 +56,7 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  console.log('/slackresponse received: ' + req);
+  console.log('/slackresponse received: ' + typeof req);
   let img = {
     fallback: 'error',
     title: req.body.value,
