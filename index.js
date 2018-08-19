@@ -56,11 +56,12 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  console.log('/slackresponse received: ' + req.body.value);
+  img_url = String(req.body.value)
+  console.log('/slackresponse received: ' + img_url);
   let img = {
     fallback: 'error',
-    title: req.body.value,
-    image_url: req.body.value
+    title: img_url,
+    image_url: img_url
   };
   let data_to_slack = { 
     username: 'giphypick',
