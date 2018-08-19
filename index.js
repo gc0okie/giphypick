@@ -42,6 +42,7 @@ app.post('/slack', (req, res1) =>
                   //console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
                 let _cancelButton = {
+                  callback_id: 'cancel button',
                   actions: [{name:'cancel',
                             text:'Cancel :(',
                             type:'button',
