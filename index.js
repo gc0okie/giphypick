@@ -3,6 +3,7 @@ const app = express();
 const path = require('path')
 const async = require('async');
 const bodyParser = require('body-parser');
+const util = require ('util')
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
 const giphy = require('giphy-api')('hQZZ5e4DdsdQqY4prZpckQetnyZZpbqP');
@@ -56,7 +57,7 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  img_url = JSON.stringify(req)
+  img_url = util.inspect(req)
   console.log('/slackresponse received: ' + img_url);
   let img = {
     fallback: 'error',
