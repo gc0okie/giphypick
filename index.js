@@ -45,7 +45,7 @@ app.post('/slack', (req, res1) =>
                   actions: [{name:'cancel',
                             text:'Cancel :(',
                             type:'button',
-                            value:'cancel'
+                            value:'_cancel'
                   }]
                 };
                 url_to_slack.push(_cancelButton);
@@ -75,20 +75,22 @@ app.post('/slackresponse', (req, res) => {
     title: _img_url,
     image_url: _img_url
   }];
-  if (_img_url=='cancel')
-  {
-    let data_to_slack = { 
-
-    };
-  }
-  else
+  if (_img_url=='_cancel')
   {
     let data_to_slack = { 
       username: 'giphypick',
       icon_emoji: ':dog:',
+      response_type: 'ephemeral',
+      text: 'cancelled'
+    };
+  } else {
+    let data_to_slack = { 
+      username: 'giphypick',
+      icon_emoji: ':dog:',
       response_type: 'in_channel',
-      text: _searchTerm, 
-      attachments: _img};
+      text: _searchTerm,
+      attachments: _img
+    };
   }
   res.json(JSON.parse(JSON.stringify(data_to_slack)))
 });
