@@ -57,9 +57,9 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  img_url = util.inspect(req);
+  img_url = JSON.stringify(req.body.payload.actions.value);
   console.log('/slackresponse received: ' + img_url);
-  console.log('\ncleaned: '+ JSON.stringify(req.body.payload))
+  console.log('\ncleaned: '+ img_url)
   let img = {
     fallback: 'error',
     title: img_url,
