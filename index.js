@@ -57,7 +57,7 @@ app.post('/slack', (req, res1) =>
                 username: 'giphypick',
                 icon_emoji: ':dog:',
                 response_type: 'ephemeral', // not public
-                text: 'pick the perfect gif', 
+                text: 'pick a gif', 
                 attachments: url_to_slack};
             //console.log('data sent to slack: \n'+ data_to_slack);
             res1.json(JSON.parse(JSON.stringify(data_to_slack)))
@@ -75,16 +75,17 @@ app.post('/slackresponse', (req, res) => {
     title: _img_url,
     image_url: _img_url
   }];
+  let data_to_slack = {};
   if (_img_url=='_cancel')
   {
-    let data_to_slack = { 
+    data_to_slack = { 
       username: 'giphypick',
       icon_emoji: ':dog:',
       response_type: 'ephemeral',
       text: 'cancelled'
     };
   } else {
-    let data_to_slack = { 
+    data_to_slack = { 
       username: 'giphypick',
       icon_emoji: ':dog:',
       response_type: 'in_channel',
