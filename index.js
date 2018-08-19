@@ -14,7 +14,8 @@ app.use(express.json());
 
 app.post('/slack', (req, res1) => 
 {
-    requestStr = String(req.body.text);
+  console.log('/slack received')  
+  requestStr = String(req.body.text);
     var url_to_slack = new Array();
     async.waterfall([
         (callback) => {
@@ -57,8 +58,9 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  img_url = JSON.parse(req.body.payload);
-  console.log('/slackresponse received: ' + JSON.stringify(img_url.actions[0].value));
+  img_url= JSON.parse(req.body.payload.action[0].value);
+  //img_url = JSON.stringify(_payload.actions[0].value)
+  console.log('/slackresponse received: ' + img_url);
   let img = {
     fallback: 'error',
     title: img_url,
