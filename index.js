@@ -31,7 +31,7 @@ app.post('/slack', (req, res1) =>
                       fallback: 'error',
                       title: img_url,
                       image_url: img_url,
-                      callback_id : 'test',
+                      callback_id : requestStr+String(i),
                       actions: [{name:'test',
                                 text:'Pick Gif!',
                                 type:'button',
@@ -57,7 +57,7 @@ app.post('/slack', (req, res1) =>
 });
 
 app.post('/slackresponse', (req, res) => {
-  img_url = JSON.parse(req);
+  img_url = util.inspect(req);
   console.log('/slackresponse received: ' + img_url);
   let img = {
     fallback: 'error',
