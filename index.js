@@ -33,7 +33,7 @@ app.post('/slack', (req, res1) =>
                       title: img_url,
                       image_url: img_url,
                       callback_id : requestStr+String(i),
-                      actions: [{name:'test',
+                      actions: [{name:requestStr,
                                 text:':arrow_up: Pick Gif!',
                                 type:'button',
                                 value:img_url
@@ -49,6 +49,7 @@ app.post('/slack', (req, res1) =>
 
                   }]
                 };
+                url_to_slack.push(_cancelButton);
                 callback(null, url_to_slack)
             }
         )},
@@ -67,19 +68,20 @@ app.post('/slack', (req, res1) =>
 
 app.post('/slackresponse', (req, res) => {
   _payload = JSON.parse(req.body.payload);
-  img_url = JSON.stringify(_payload.actions[0].value).replace(/"/g,"");
-  console.log('/slackresponse received: ' + img_url);
-  let img = [{
+  _img_url = JSON.stringify(_payload.actions[0].value).replace(/"/g,"");
+  _searchTerm = JSON.stringify(_payload.actions[0].name).replace(/"/g,"");
+  console.log('/slackresponse received: ' + _img_url);
+  let _img = [{
     fallback: 'error',
-    title: img_url,
-    image_url: img_url
+    title: _img_url,
+    image_url: _img_url
   }];
   let data_to_slack = { 
     username: 'giphypick',
     icon_emoji: ':dog:',
     response_type: 'in_channel',
-    text: 'the winner here', 
-    attachments: img};
+    text: _searchTerm, 
+    attachments: _img};
   res.json(JSON.parse(JSON.stringify(data_to_slack)))
 });
 
