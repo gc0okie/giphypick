@@ -43,7 +43,7 @@ app.post('/slack', (req, res1) =>
                 }
                 let _cancelButton = {
                   actions: [{name:'cancel',
-                            text:'Cancel :{',
+                            text:'Cancel :(',
                             type:'button',
                             value:'cancel'
                   }]
@@ -79,7 +79,7 @@ app.post('/slackresponse', (req, res) => {
   {
     let data_to_slack = { 
 
-    }
+    };
   }
   else
   {
