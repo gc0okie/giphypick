@@ -34,13 +34,21 @@ app.post('/slack', (req, res1) =>
                       image_url: img_url,
                       callback_id : requestStr+String(i),
                       actions: [{name:'test',
-                                text:'Pick Gif!',
+                                text:':arrow_up: Pick Gif!',
                                 type:'button',
                                 value:img_url
                   }]};
                   url_to_slack.push(img);
                   //console.log(i, '\n', JSON.stringify(url_to_slack), '\n');
                 }
+                let _cancelButton = {
+                  actions: [{name:'cancel',
+                            text:'Cancel :{',
+                            type:'button',
+                            value:null
+
+                  }]
+                };
                 callback(null, url_to_slack)
             }
         )},
@@ -49,7 +57,7 @@ app.post('/slack', (req, res1) =>
                 username: 'giphypick',
                 icon_emoji: ':dog:',
                 response_type: 'ephemeral', // not public
-                text: 'giphypick text here', 
+                text: 'pick the perfect gif', 
                 attachments: url_to_slack};
             //console.log('data sent to slack: \n'+ data_to_slack);
             res1.json(JSON.parse(JSON.stringify(data_to_slack)))
